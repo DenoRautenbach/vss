@@ -9,7 +9,7 @@ export const NewsSection = () => {
         <div className="flex justify-between items-end mb-12">
           <div>
             <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Latest News & Events</h2>
-            <p className="mt-3 text-lg text-slate-600">Stay updated with what's happening at Westwood.</p>
+            <p className="mt-3 text-lg text-slate-600">Stay updated with what&apos;s happening at Westwood.</p>
           </div>
           <button className="hidden md:flex items-center text-blue-700 font-semibold hover:text-blue-900 group">
             View all news
