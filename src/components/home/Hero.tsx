@@ -1,42 +1,116 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+"use client";
+
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export const Hero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const slides = [
+    { image: '/bgs/hero.jpg', title: 'Hero', subtitle: 'Hero' },
+    { image: '/bgs/hero2.jpg', title: 'Hero2', subtitle: 'Hero2' },
+    { image: '/bgs/hero3.jpg', title: 'Hero3', subtitle: 'Hero3' },
+    { image: '/bgs/hero4.jpg', title: 'Hero4', subtitle: 'Hero4' },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIsTransitioning(true);
+      setTimeout(() => setCurrentSlide((prev) => (prev + 1) % slides.length), 200);
+      setTimeout(() => setIsTransitioning(false), 1200);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  useEffect(() => {
+    let ticking = false;
+    const updateScrollY = () => {
+      setScrollY(window.scrollY);
+      ticking = false;
+    };
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateScrollY);
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="relative bg-blue-900 text-white overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80"
-          alt="Students walking on campus"
-          className="w-full h-full object-cover opacity-30"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/90 to-blue-900/40"></div>
-      </div>
+    <section className="relative h-screen overflow-hidden border-[0rem] lg:border-[3rem] border-transparent rounded-none lg:rounded-tl-[5rem] lg:rounded-bl-[5rem]">
+      {/* DESKTOP VERSION */}
+      <div className="hidden lg:block relative w-full h-full">
+        {/* Horizontal Line Behind Images */}
+        <div
+          className={`absolute top-1/2 left-1/2 w-full max-w-4xl flex items-center justify-center z-0 pointer-events-none transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'
+            }`}
+          style={{ transform: `translateX(${scrollY * -0.5}px) translateY(-50%)` }}
+        >
+          <hr className="absolute w-screen border-t-2 border-black opacity-50" />
+        </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 flex flex-col justify-center min-h-[600px]">
-        <div className="max-w-3xl">
-          <span className="inline-block py-1 px-3 rounded-full bg-blue-800/50 border border-blue-400/30 text-blue-200 text-sm font-semibold tracking-wider mb-6">
-            EXCELLENCE IN EDUCATION
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-            Empowering the <span className="text-blue-300">Leaders</span> of Tomorrow
-          </h1>
-          <p className="text-lg md:text-xl text-blue-100 mb-10 max-w-2xl leading-relaxed">
-            Villiersdorp Secondary School is dedicated to fostering academic excellence, personal growth, and a strong sense of community in a safe and supportive environment.
-          </p>
+        {/* Background Carousel */}
+        <div className="absolute inset-0 will-change-transform z-10">
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                }`}
+              style={{ transform: `translate3d(${scrollY * -0.3}px, 0, 0)` }}
+            >
+              <Image src={slide.image} alt={slide.title} fill className="w-[150%] h-full object-cover" />
+            </div>
+          ))}
+        </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button className="px-8 py-4 bg-white text-blue-900 font-bold rounded-lg hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 shadow-lg">
-              Apply Now
-              <ArrowRight className="w-5 h-5" />
-            </button>
-            <button className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
-              Virtual Tour
-            </button>
+        {/* Hero Text */}
+        <div className="absolute left-16 bottom-16 w-full z-20">
+          <div className="text-center md:text-left px-4 sm:px-6 lg:px-8">
+            <h1 className="text-5xl md:text-[10rem] font-light text-white drop-shadow-lg leading-tight">
+              BUILD WITH PRIDE
+            </h1>
+            <p className="text-4xl text-white mt-2">{slides[currentSlide].subtitle}</p>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* MOBILE VERSION */}
+      <div className="lg:hidden relative w-full h-screen">
+        <div className="absolute inset-0">
+          <Image
+            src={slides[currentSlide].image}
+            alt={slides[currentSlide].title}
+            fill
+            className="w-full h-full object-cover brightness-75"
+          />
+        </div>
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-30" />
+
+        {/* Text Centered */}
+        <div className="relative z-20 flex flex-col items-center justify-center h-full px-6 text-center text-white">
+          <h1 className="text-4xl font-semibold leading-tight mb-2">
+            {slides[currentSlide].title}
+          </h1>
+          <p className="text-lg mb-6">{slides[currentSlide].subtitle}</p>
+
+          {/* Small progress dots */}
+          <div className="flex space-x-2">
+            {slides.map((_, index) => (
+              <span
+                key={index}
+                className={`h-2 w-2 rounded-full transition-all duration-500 ${index === currentSlide ? 'bg-white scale-125' : 'bg-gray-400'
+                  }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };

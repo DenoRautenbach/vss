@@ -7,6 +7,9 @@ import { Menu, X, ChevronDown, ChevronsUpDown, Globe } from 'lucide-react';
 import { SUBJECTS } from '@/lib/data';
 import { useLanguage } from '@/lib/LanguageContext';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
+
+import logo from '../../../public/logo.png';
 
 const navLinks = [
   { key: "home", href: "/" },
@@ -41,13 +44,18 @@ export const Navbar = () => {
   return (
     <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20 items-center">
+        <div className="flex justify-between h-32 items-center">
 
           {/* Logo area */}
           <Link href="/" className="flex-shrink-0 flex items-center cursor-pointer">
-            <div className="w-10 h-10 bg-blue-900 text-white flex items-center justify-center rounded-lg font-bold text-xl mr-3">
-              HS
-            </div>
+            <Image
+              className="rounded-lg"
+              src={logo}
+              alt="logo"
+              width={100}
+              height={100}
+              priority
+            />
             <span className="font-bold text-xl text-slate-800 tracking-tight hidden sm:block">Villiersdorp Secondary School</span>
           </Link>
 
