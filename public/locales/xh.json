@@ -12,5 +12,15 @@
   "about": {
     "title": "Ngathi",
     "description": "Funda ngakumbi ngeqhinga lethu nembono yethu."
+  },
+  "nav": {
+    "home": "Ikhaya",
+    "sport": "Ezemidlalo",
+    "alumni": "Alumni",
+    "about": "Ngathi",
+    "contact": "Qhagamshelana",
+    "subjects": "Izifundo",
+    "language": "Ulwimi",
+    "allSubjects": "Zonke Izifundo"
   }
 }

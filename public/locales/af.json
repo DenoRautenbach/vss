@@ -12,5 +12,15 @@
   "about": {
     "title": "Oor Ons",
     "description": "Leer meer oor ons maatskappy en ons missie."
+  },
+  "nav": {
+    "home": "Tuis",
+    "sport": "Sport",
+    "alumni": "Alumni",
+    "about": "Oor Ons",
+    "contact": "Kontak",
+    "subjects": "Vakke",
+    "language": "Taal",
+    "allSubjects": "Alle Vakke"
   }
 }

@@ -6,10 +6,10 @@ import { GenericContent } from '@/components/ui/GenericContent';
 export default function AboutPage() {
   return (
     <div>
-      <PageHeader 
-        title="About Westwood High" 
-        icon={Info} 
-        description="Learn about our history, mission, faculty, and the values that drive our educational excellence." 
+      <PageHeader
+        title="About Villiersdorp Secondary School"
+        icon={Info}
+        description="Learn about our history, mission, faculty, and the values that drive our educational excellence."
       />
       <GenericContent />
     </div>

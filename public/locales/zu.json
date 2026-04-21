@@ -1,0 +1,27 @@
+{
+    "common": {
+        "languageSwitcher": "Language Switcher",
+        "english": "English",
+        "afrikaans": "Afrikaans",
+        "isixhosa": "isiXhosa",
+        "isizulu": "isiZulu"
+    },
+    "home": {
+        "title": "Siyakwamukela kuwebhusayithi yethu",
+        "description": "Lena yincazelo yesampula yekhasi lasekhaya."
+    },
+    "about": {
+        "title": "Mayelana Nathi",
+        "description": "Funda kabanzi ngenkampani yethu kanye nomgomo wethu."
+    },
+    "nav": {
+        "home": "Ikhaya",
+        "sport": "Ezemidlalo",
+        "alumni": "Alumni",
+        "about": "Mayelana Nathi",
+        "contact": "Xhumana Nathi",
+        "subjects": "Izifundo",
+        "language": "Ulimi",
+        "allSubjects": "Zonke Izifundo"
+    }
+}

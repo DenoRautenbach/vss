@@ -1,16 +1,26 @@
 {
-    "common": {
-      "languageSwitcher": "Language Switcher",
-      "english": "English",
-      "afrikaans": "Afrikaans",
-      "isixhosa": "isiXhosa"
-    },
-    "home": {
-      "title": "Welcome to our website",
-      "description": "This is a sample description for the home page."
-    },
-    "about": {
-      "title": "About Us",
-      "description": "Learn more about our company and our mission."
-    }
+  "common": {
+    "languageSwitcher": "Language Switcher",
+    "english": "English",
+    "afrikaans": "Afrikaans",
+    "isixhosa": "isiXhosa"
+  },
+  "home": {
+    "title": "Welcome to our website",
+    "description": "This is a sample description for the home page."
+  },
+  "about": {
+    "title": "About Us",
+    "description": "Learn more about our company and our mission."
+  },
+  "nav": {
+    "home": "Home",
+    "sport": "Sport",
+    "alumni": "Alumni",
+    "about": "About",
+    "contact": "Contact",
+    "subjects": "Subjects",
+    "language": "Language",
+    "allSubjects": "All Subjects"
   }
+}

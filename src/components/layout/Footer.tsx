@@ -9,7 +9,7 @@ export const Footer = () => (
           <div className="w-8 h-8 bg-blue-600 text-white flex items-center justify-center rounded font-bold mr-2">
             HS
           </div>
-          <span className="font-bold text-lg text-white">Westwood High School</span>
+          <span className="font-bold text-lg text-white">Villiersdorp Secondary School</span>
         </div>
         <p className="text-sm max-w-sm">
           Empowering students to achieve their highest potential in a changing world.
@@ -33,7 +33,7 @@ export const Footer = () => (
       </div>
     </div>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-slate-800 text-sm text-center">
-      &copy; {new Date().getFullYear()} Westwood High School. All rights reserved.
+      &copy; {new Date().getFullYear()} Villiersdorp Secondary School. All rights reserved.
     </div>
   </footer>
 );
